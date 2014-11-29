@@ -1,0 +1,14 @@
+
+~~ Retrieving the linuxes ~~
+
+The retrieving of Linux kernels is based on wget.
+You may have to configure an HTTP proxy.
+
+Edit ~/.wgetrc and add the following for instance.
+ 
+	http_proxy=www-cache:3128
+
+~~ Linux next ~~
+
+Linux next is based on a local clone of Linus'tree
+to save space. 

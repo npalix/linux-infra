@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chmod -R a-w linux-2.4.[0-9]*
+chmod -R a-w linux-2.6.[0-9]*
+chmod -R a-w linux-3.[0-9]*

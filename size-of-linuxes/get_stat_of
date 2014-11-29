@@ -1,0 +1,4 @@
+#!/bin/sh
+
+grep -H "$1" *.sizelog | grep -v Warning | grep -v Creating | grep -v "a working MD5 command"| sed "s|linux-\([^:]*\):|\1 ; |" | sed "s|\.sizelog||"
+

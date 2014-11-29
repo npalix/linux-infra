@@ -1,0 +1,28 @@
+
+
+To add missing file run:
+
+	./compute_all
+
+
+To extract info. with HC formatting:
+
+For example for drivers in 2.5:
+
+	./get_stat_of drivers | grep "2\.5\." | \
+		sed "s|^\([^;]*\) ;[^=]*=\([0-9]*\),.*$|(\"linux-\1\", ///200, \2)|"
+
+To extract info. without formatting but proper ordering:
+
+	./get_stat_of fs | grep "2\.5\." | \
+		sed "s|^2\.5\.\([^;]*\) ;[^=]*=\([0-9]*\).*$|\1  \2|" | sort -g
+
+To extract info of top-level:
+
+	./get_stat_of | grep "2\.5\." | grep "ansic:" | \
+		sed "s|^2\.5\.\([^;]*\); ansic: *\([0-9]*\) .*$|\1  \2|" | sort -g
+
+To reorder dates for kernel.org website:
+
+	uniq | sed 's|\([0-9][0-9]\)-\([A-Za-z]*\)-\([0-9][0-9][0-9][0-9]\)|\2/\1/\3|'
+

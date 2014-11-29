@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FILE=`basename $1`.sizelog
+
+sloccount $1 >> $FILE
+
