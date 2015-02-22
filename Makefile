@@ -332,7 +332,9 @@ PDIRwww=$(LIST10:%=v1.0/%) $(LIST11:%=v1.1/%) $(LIST12:%=v1.2/%) $(LIST13:%=v1.3
 PDIRgit=$(LIST26git) $(LIST3)
 IDX=$(DIR:%=idx-%)
 
-all: update-git $(DIR)
+all: update-git
+	$(MAKE) check-all
+check-all: $(DIR)
 
 linux-git:
 	git clone $(LINUSTREE) $@
@@ -413,5 +415,7 @@ $(LIST26www):
 	$(MAKE) v2.6/$@
 	$(MAKE) idx-$@
 
-all-linux-3: update $(LIST3)
+check-linux-3: $(LIST3)
+all-linux-3: update
+	$(MAKE) check-linux-3
 
