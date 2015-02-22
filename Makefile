@@ -337,7 +337,7 @@ all: update-git $(DIR)
 linux-git:
 	git clone $(LINUSTREE) $@
 
-update update-git:
+update update-git: linux-git
 	git --git-dir=linux-git/.git fetch
 
 update-next:
