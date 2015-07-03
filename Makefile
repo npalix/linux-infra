@@ -104,216 +104,25 @@ LIST22=linux-2.2.0       \
        linux-2.2.6       \
        linux-2.2.7       \
        linux-2.2.26
-LIST23=linux-2.3.0	 \
-       linux-2.3.1	 \
-       linux-2.3.2	 \
-       linux-2.3.3	 \
-       linux-2.3.4	 \
-       linux-2.3.5	 \
-       linux-2.3.6	 \
-       linux-2.3.7	 \
-       linux-2.3.8	 \
-       linux-2.3.9	 \
-       linux-2.3.10	 \
-       linux-2.3.11	 \
-       linux-2.3.12	 \
-       linux-2.3.13	 \
-       linux-2.3.14	 \
-       linux-2.3.15	 \
-       linux-2.3.16	 \
-       linux-2.3.17	 \
-       linux-2.3.18	 \
-       linux-2.3.19	 \
-       linux-2.3.20	 \
-       linux-2.3.21	 \
-       linux-2.3.22	 \
-       linux-2.3.23	 \
-       linux-2.3.24	 \
-       linux-2.3.25	 \
-       linux-2.3.26	 \
-       linux-2.3.27	 \
-       linux-2.3.28	 \
-       linux-2.3.29	 \
-       linux-2.3.30	 \
-       linux-2.3.31	 \
-       linux-2.3.32	 \
-       linux-2.3.33	 \
-       linux-2.3.34	 \
-       linux-2.3.35	 \
-       linux-2.3.36	 \
-       linux-2.3.37	 \
-       linux-2.3.38	 \
-       linux-2.3.39	 \
-       linux-2.3.40	 \
-       linux-2.3.41	 \
-       linux-2.3.42	 \
-       linux-2.3.43	 \
-       linux-2.3.44	 \
-       linux-2.3.45	 \
-       linux-2.3.46	 \
-       linux-2.3.47	 \
-       linux-2.3.48	 \
-       linux-2.3.49	 \
-       linux-2.3.50	 \
-       linux-2.3.51	 \
+
+VER3=$(shell seq 0 51)
+LIST23=$(VER3:%=linux-2.3.%)	 \
        linux-2.3.99-pre6 \
        linux-2.3.99-pre9
-LIST24=linux-2.4.0       \
-       linux-2.4.1       \
-       linux-2.4.2       \
-       linux-2.4.3       \
-       linux-2.4.4       \
-       linux-2.4.5       \
-       linux-2.4.6       \
-       linux-2.4.7       \
-       linux-2.4.8       \
-       linux-2.4.9       \
-       linux-2.4.10      \
-       linux-2.4.12      \
-       linux-2.4.13      \
-       linux-2.4.14      \
-       linux-2.4.15      \
-       linux-2.4.16      \
-       linux-2.4.17      \
-       linux-2.4.18      \
-       linux-2.4.19      \
-       linux-2.4.20      \
-       linux-2.4.21      \
-       linux-2.4.22      \
-       linux-2.4.23      \
-       linux-2.4.24      \
-       linux-2.4.25      \
-       linux-2.4.26      \
-       linux-2.4.27      \
-       linux-2.4.28      \
-       linux-2.4.29      \
-       linux-2.4.30      \
-       linux-2.4.31      \
-       linux-2.4.32      \
-       linux-2.4.33      \
-       linux-2.4.34      \
-       linux-2.4.35      \
-       linux-2.4.36      \
-       linux-2.4.37
-LIST25=linux-2.5.0       \
-       linux-2.5.1       \
-       linux-2.5.2       \
-       linux-2.5.3       \
-       linux-2.5.4       \
-       linux-2.5.5       \
-       linux-2.5.6       \
-       linux-2.5.7       \
-       linux-2.5.8       \
-       linux-2.5.9       \
-       linux-2.5.10      \
-       linux-2.5.11      \
-       linux-2.5.12      \
-       linux-2.5.13      \
-       linux-2.5.14      \
-       linux-2.5.15      \
-       linux-2.5.16      \
-       linux-2.5.17      \
-       linux-2.5.18      \
-       linux-2.5.19      \
-       linux-2.5.20      \
-       linux-2.5.21      \
-       linux-2.5.22      \
-       linux-2.5.23      \
-       linux-2.5.24      \
-       linux-2.5.25      \
-       linux-2.5.26      \
-       linux-2.5.27      \
-       linux-2.5.28      \
-       linux-2.5.29      \
-       linux-2.5.30      \
-       linux-2.5.31      \
-       linux-2.5.32      \
-       linux-2.5.33      \
-       linux-2.5.34      \
-       linux-2.5.35      \
-       linux-2.5.36      \
-       linux-2.5.37      \
-       linux-2.5.38      \
-       linux-2.5.39      \
-       linux-2.5.40      \
-       linux-2.5.41      \
-       linux-2.5.42      \
-       linux-2.5.43      \
-       linux-2.5.44      \
-       linux-2.5.45      \
-       linux-2.5.46      \
-       linux-2.5.47      \
-       linux-2.5.48      \
-       linux-2.5.49      \
-       linux-2.5.50      \
-       linux-2.5.51      \
-       linux-2.5.52      \
-       linux-2.5.53      \
-       linux-2.5.54      \
-       linux-2.5.55      \
-       linux-2.5.56      \
-       linux-2.5.57      \
-       linux-2.5.58      \
-       linux-2.5.59      \
-       linux-2.5.60      \
-       linux-2.5.61      \
-       linux-2.5.62      \
-       linux-2.5.63      \
-       linux-2.5.64      \
-       linux-2.5.65      \
-       linux-2.5.66      \
-       linux-2.5.67      \
-       linux-2.5.68      \
-       linux-2.5.69      \
-       linux-2.5.70      \
-       linux-2.5.71      \
-       linux-2.5.72      \
-       linux-2.5.73      \
-       linux-2.5.74      \
-       linux-2.5.75
-LIST26www=linux-2.6.0	 \
-       linux-2.6.1	 \
-       linux-2.6.2	 \
-       linux-2.6.3	 \
-       linux-2.6.4	 \
-       linux-2.6.5	 \
-       linux-2.6.6	 \
-       linux-2.6.7	 \
-       linux-2.6.8	 \
-       linux-2.6.9	 \
-       linux-2.6.10
-LIST26git=\
-       linux-2.6.11	 \
-       linux-2.6.12	 \
-       linux-2.6.13	 \
-       linux-2.6.14	 \
-       linux-2.6.15	 \
-       linux-2.6.16	 \
-       linux-2.6.17	 \
-       linux-2.6.18	 \
-       linux-2.6.19	 \
-       linux-2.6.20	 \
-       linux-2.6.21	 \
-       linux-2.6.22	 \
-       linux-2.6.23	 \
-       linux-2.6.24	 \
-       linux-2.6.25	 \
-       linux-2.6.26	 \
-       linux-2.6.27	 \
-       linux-2.6.28	 \
-       linux-2.6.29	 \
-       linux-2.6.30	 \
-       linux-2.6.31	 \
-       linux-2.6.32      \
-       linux-2.6.33      \
-       linux-2.6.34      \
-       linux-2.6.35      \
-       linux-2.6.36      \
-       linux-2.6.37      \
-       linux-2.6.38      \
-       linux-2.6.39
+
+VER4=$(shell seq 0 37)
+LIST24=$(VER4:%=linux-2.4.%)
+
+VER5=$(shell seq 0 75)
+LIST25=$(VER5:%=linux-2.5.%)
+
+VER6www=$(shell seq 0 10)
+LIST26www=$(VER6www:%=linux-2.6.%)
+VER6git=$(shell seq 11 39)
+LIST26git=$(VER6git:%=linux-2.6.%)
 
 LINUXV3=$(shell git --git-dir=linux-git/.git tag -l v3.[0-9] v3.[0-9][0-9])
+LINUXV4=$(shell git --git-dir=linux-git/.git tag -l v4.[0-9] v4.[0-9][0-9])
 # To add new v3.x versions, run
 # 	git --git-dir=/var/linuxes/linux-git/.git fetch
 # This will update the git repository and also retrieve new tags.
