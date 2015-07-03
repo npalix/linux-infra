@@ -130,15 +130,16 @@ LINUXV4=$(shell git --git-dir=linux-git/.git tag -l v4.[0-9] v4.[0-9][0-9])
 # NOTE: This is run by 'make', 'make udpate' and 'make all-linux-3'
 # In practice, to update a 3.x version just run make with no arguments
 LIST3=$(LINUXV3:v%=linux-%)
+LIST4=$(LINUXV4:v%=linux-%)
 
 DIR=$(LIST10) $(LIST11) $(LIST12) $(LIST13) \
 	$(LIST20) $(LIST21) $(LIST22) $(LIST23) $(LIST24) $(LIST25) \
-	$(LIST26www) $(LIST26git) $(LIST3)
+	$(LIST26www) $(LIST26git) $(LIST3) $(LIST4)
 
 PDIRwww=$(LIST10:%=v1.0/%) $(LIST11:%=v1.1/%) $(LIST12:%=v1.2/%) $(LIST13:%=v1.3/%) \
      $(LIST20:%=v2.0/%) $(LIST21:%=v2.1/%) $(LIST22:%=v2.2/%) $(LIST23:%=v2.3/%) \
      $(LIST24:%=v2.4/%) $(LIST25:%=v2.5/%) $(LIST26www:%=v2.6/%)
-PDIRgit=$(LIST26git) $(LIST3)
+PDIRgit=$(LIST26git) $(LIST3) $(LIST4)
 IDX=$(DIR:%=idx-%)
 
 all: update-git
@@ -227,4 +228,8 @@ $(LIST26www):
 check-linux-3: $(LIST3)
 all-linux-3: update
 	$(MAKE) check-linux-3
+
+check-linux-4: $(LIST4)
+all-linux-4: update
+	$(MAKE) check-linux-4
 
