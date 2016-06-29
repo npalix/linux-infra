@@ -1,10 +1,15 @@
 #!/usr/bin/make -f
 
-main=git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+main=linux-git
+linus=git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 history=git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git
 
 linux-full:
 	git clone $(main) $@
+	cd $@ && git remote add linus $(linus)
 	cd $@ && git remote add history $(history)
 	cd $@ && git fetch history
 	echo "1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 e7e173af42dbf37b1d946f9ee00219cb3b2bea6a" > $@/.git/info/grafts 
+
+$(main):
+	$(MAKE) $@
