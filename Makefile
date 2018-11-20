@@ -172,13 +172,13 @@ $(PDIRgit):
 	cd linux-git && git archive --format=tar --prefix=$@/ v$(@:linux-%=%) | (cd .. && tar xf - )
 	cd $@ && $(GLIMPSEINDEX)
 	chmod -R ug+r-w $@
-	chown -R $(OWNER):$(GROUP) $@
+	if `getent passwd $(OWNER)` && `getent group $(GROUP)` ; then chown -R $(OWNER):$(GROUP) $@ ; fi
 
 $(IDX):
 	if [ -d linux ] ;then mv linux $(@:idx-%=%); fi # Needed for some old versions prior to 2.6.0
 	cd $(@:idx-%=%) && $(GLIMPSEINDEX)
 	chmod -R ug+r-w $(@:idx-%=%)
-	chown -R $(OWNER):$(GROUP) $(@:idx-%=%)
+	if `getent passwd $(OWNER)` && `getent group $(GROUP)` ; then chown -R $(OWNER):$(GROUP) $(@:idx-%=%) ; fi
 
 $(LIST10):
 	$(MAKE) v1.0/$@
