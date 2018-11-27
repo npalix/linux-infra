@@ -5,12 +5,15 @@ NEXTTREE=git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 
 GLIMPSEINDEX=~/coccinelle/scripts/glimpseindex_cocci.sh
 OWNER=user
-GROUP=users
+GROUP=group
 
 #
 # Makefile.local may override the default configuration
 #
 -include Makefile.local
+
+NEWOWNER=$(shell getent passwd $(OWNER) )
+NEWGROUP=$(shell getent group $(GROUP) )
 
 BASE=https://www.kernel.org/pub/linux/kernel/
 EXT=.tar.xz
@@ -172,13 +175,15 @@ $(PDIRgit):
 	cd linux-git && git archive --format=tar --prefix=$@/ v$(@:linux-%=%) | (cd .. && tar xf - )
 	cd $@ && $(GLIMPSEINDEX)
 	chmod -R ug+r-w $@
-	if `getent passwd $(OWNER)` && `getent group $(GROUP)` ; then chown -R $(OWNER):$(GROUP) $@ ; fi
+	if test -n "$(NEWOWNER)" ; then chown -R $(OWNER) $@ ; fi
+	if test -n "$(NEWGROUP)" ; then chgrp -R $(GROUP) $@ ; fi
 
 $(IDX):
 	if [ -d linux ] ;then mv linux $(@:idx-%=%); fi # Needed for some old versions prior to 2.6.0
 	cd $(@:idx-%=%) && $(GLIMPSEINDEX)
 	chmod -R ug+r-w $(@:idx-%=%)
-	if `getent passwd $(OWNER)` && `getent group $(GROUP)` ; then chown -R $(OWNER):$(GROUP) $(@:idx-%=%) ; fi
+	if test -n "$(NEWOWNER)" ; then chown -R $(OWNER) $(@:idx-%=%) ; fi
+	if test -n "$(NEWGROUP)" ; then chgrp -R $(GROUP) $(@:idx-%=%) ; fi
 
 $(LIST10):
 	$(MAKE) v1.0/$@
