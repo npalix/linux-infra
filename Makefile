@@ -126,6 +126,7 @@ LIST26git=$(VER6git:%=linux-2.6.%)
 
 LINUXV3=$(shell git --git-dir=linux-git/.git tag -l v3.[0-9] v3.[0-9][0-9])
 LINUXV4=$(shell git --git-dir=linux-git/.git tag -l v4.[0-9] v4.[0-9][0-9])
+LINUXV5=$(shell git --git-dir=linux-git/.git tag -l v5.[0-9] v5.[0-9][0-9])
 # To add new v3.x versions, run
 # 	git --git-dir=/var/linuxes/linux-git/.git fetch
 # This will update the git repository and also retrieve new tags.
@@ -134,15 +135,16 @@ LINUXV4=$(shell git --git-dir=linux-git/.git tag -l v4.[0-9] v4.[0-9][0-9])
 # In practice, to update a 3.x version just run make with no arguments
 LIST3=$(LINUXV3:v%=linux-%)
 LIST4=$(LINUXV4:v%=linux-%)
+LIST5=$(LINUXV5:v%=linux-%)
 
 DIR=$(LIST10) $(LIST11) $(LIST12) $(LIST13) \
 	$(LIST20) $(LIST21) $(LIST22) $(LIST23) $(LIST24) $(LIST25) \
-	$(LIST26www) $(LIST26git) $(LIST3) $(LIST4)
+	$(LIST26www) $(LIST26git) $(LIST3) $(LIST4) $(LIST5)
 
 PDIRwww=$(LIST10:%=v1.0/%) $(LIST11:%=v1.1/%) $(LIST12:%=v1.2/%) $(LIST13:%=v1.3/%) \
      $(LIST20:%=v2.0/%) $(LIST21:%=v2.1/%) $(LIST22:%=v2.2/%) $(LIST23:%=v2.3/%) \
      $(LIST24:%=v2.4/%) $(LIST25:%=v2.5/%) $(LIST26www:%=v2.6/%)
-PDIRgit=$(LIST26git) $(LIST3) $(LIST4)
+PDIRgit=$(LIST26git) $(LIST3) $(LIST4) $(LIST5)
 IDX=$(DIR:%=idx-%)
 
 all: update-git
@@ -238,3 +240,6 @@ check-linux-4: $(LIST4)
 all-linux-4: update
 	$(MAKE) check-linux-4
 
+check-linux-5: $(LIST5)
+all-linux-5: update
+	$(MAKE) check-linux-5
