@@ -4,6 +4,8 @@ NEXTTREE=git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 #NEXTTREE=http://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 
 GLIMPSEINDEX=~/coccinelle/scripts/glimpseindex_cocci.sh
+IDUTILSINDEX="mkid -i C --output idutils_index"
+INDEXER="idutils"
 OWNER=user
 GROUP=group
 
@@ -11,6 +13,13 @@ GROUP=group
 # Makefile.local may override the default configuration
 #
 -include Makefile.local
+
+ifeq ($(INDEXER) , idutils)
+       	INDEXERTYPE=$(IDUTILSINDEX) 
+else 
+	INDEXERTYPE=$(GLIMPSEINDEX) 
+endif
+
 
 NEWOWNER=$(shell getent passwd $(OWNER) )
 NEWGROUP=$(shell getent group $(GROUP) )
@@ -160,7 +169,7 @@ update update-git: linux-git
 update-next:
 	git --git-dir=linux-next/.git fetch --all
 	cd linux-next && git reset --hard linux-next/master
-	cd linux-next && $(GLIMPSEINDEX)
+	cd linux-next && $(INDEXERTYPE) 
 
 linux-next: linux-git
 	git clone -l linux-git linux-next
@@ -175,14 +184,14 @@ $(PDIRwww):
 $(PDIRgit):
 	@echo Retrieving $@
 	cd linux-git && git archive --format=tar --prefix=$@/ v$(@:linux-%=%) | (cd .. && tar xf - )
-	cd $@ && $(GLIMPSEINDEX)
+	cd $@ && $(INDEXERTYPE) \
 	chmod -R ug+r-w $@
 	if test -n "$(NEWOWNER)" ; then chown -R $(OWNER) $@ ; fi
 	if test -n "$(NEWGROUP)" ; then chgrp -R $(GROUP) $@ ; fi
 
 $(IDX):
 	if [ -d linux ] ;then mv linux $(@:idx-%=%); fi # Needed for some old versions prior to 2.6.0
-	cd $(@:idx-%=%) && $(GLIMPSEINDEX)
+	cd $(@:idx-%=%) && $(INDEXERTYPE)
 	chmod -R ug+r-w $(@:idx-%=%)
 	if test -n "$(NEWOWNER)" ; then chown -R $(OWNER) $(@:idx-%=%) ; fi
 	if test -n "$(NEWGROUP)" ; then chgrp -R $(GROUP) $(@:idx-%=%) ; fi
