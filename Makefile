@@ -19,6 +19,13 @@ GROUP=group
 #
 -include Makefile.local
 
+ifeq ($(INDEXER) , idutils)
+       	INDEXERTYPE=$(IDUTILSINDEX) 
+else 
+	INDEXERTYPE=$(GLIMPSEINDEX) 
+endif
+
+
 NEWOWNER=$(shell getent passwd $(OWNER) )
 NEWGROUP=$(shell getent group $(GROUP) )
 
