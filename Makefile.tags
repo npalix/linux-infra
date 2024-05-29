@@ -1,0 +1,6 @@
+#
+# Duplicate v6.x in linux-x for later handling by Herodotos
+#
+set-git-tag:
+	cd linux-git && for v in `git tag -l "v6.[0-9][0-9]?"`; do v2=`echo $v | sed 's/^v//'`; git tag linux-$v2 v$v2 ; done
+
